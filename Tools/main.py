@@ -1,5 +1,5 @@
-from Calculator import Calculator
-from Converter import Converter
+from Calculator.Calculator import Calculator
+from Converter.Converter import Converter
 
 
 def main():

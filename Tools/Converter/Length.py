@@ -1,4 +1,4 @@
-from Helper import Helper
+from .Helper import Helper
 
 
 class Length:
@@ -31,6 +31,7 @@ class Length:
             print("2. Kilometer")
             print("3. Centimeter")
             print("4. Milimeter")
+            print("0. Exit")
             originNum = input("Origin Unit: ")
             convertNum = input("Convert Unit: ")
 

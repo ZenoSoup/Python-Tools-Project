@@ -1,6 +1,6 @@
-from Weight import Weight
-from Temperature import Temperature
-from Length import Length
+from .Weight import Weight
+from .Temperature import Temperature
+from .Length import Length
 
 
 class Converter:
