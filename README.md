@@ -1,0 +1,1 @@
+Just some random tools. made it in 3 hours, but hey.... Aleast i didn't use AI
