@@ -28,10 +28,8 @@ class Length:
     def Start(self):
         while True:
             print("Length".center(Global.HeaderFormatConstant, "="))
-            print("1. Meter")
-            print("2. Kilometer")
-            print("3. Centimeter")
-            print("4. Milimeter")
+            for key, value in self.lengthKey.items:
+                print(f"{key}. {value}")
             print("0. Exit")
             print("=" * Global.HeaderFormatConstant)
             originNum = input(f"{"Origin Unit":<{Global.TextFormatConstant}}: ")
