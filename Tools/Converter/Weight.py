@@ -31,8 +31,10 @@ class Weight:
     def Start(self):
         while True:
             print("Weight".center(Global.HeaderFormatConstant, "="))
-            for key, value in self.weightKey.items:
+
+            for key, value in self.weightKey.items():
                 print(f"{key}. {value}")
+
             print("0. Exit")
             print("=" * Global.HeaderFormatConstant)
             originNum = input(f"{"Origin Unit":<{Global.TextFormatConstant}}: ")

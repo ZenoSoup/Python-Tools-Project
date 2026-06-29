@@ -21,8 +21,10 @@ class Temperature:
     def Start(self):
         while True:
             print("Temperature".center(Global.HeaderFormatConstant, "="))
-            for key, value in self.tempKey.items:
+
+            for key, value in self.tempKey.items():
                 print(f"{key}. {value}")
+
             print("0. Exit")
             print("=" * Global.HeaderFormatConstant)
             originNum = input(
