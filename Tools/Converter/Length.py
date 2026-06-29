@@ -1,4 +1,5 @@
 from .Helper import Helper
+from Global import Global
 
 
 class Length:
@@ -26,23 +27,26 @@ class Length:
 
     def Start(self):
         while True:
-            print("Length".center(25, "="))
+            print("Length".center(Global.HeaderFormatConstant, "="))
             print("1. Meter")
             print("2. Kilometer")
             print("3. Centimeter")
             print("4. Milimeter")
             print("0. Exit")
-            originNum = input("Origin Unit: ")
-            convertNum = input("Convert Unit: ")
+            print("=" * Global.HeaderFormatConstant)
+            originNum = input(f"{"Origin Unit":<{Global.TextFormatConstant}}: ")
+            convertNum = input(f"{"Convert Unit":<{Global.TextFormatConstant}}: ")
+
+            if originNum == "0" or convertNum == "0":
+                return
 
             if originNum not in self.lengthKey or convertNum not in self.lengthKey:
                 print("Input Invalid")
                 continue
 
-            if originNum == "0" or convertNum == "0":
-                return
-
-            value = Helper.inputFloat("Input The Origin Length: ")
+            value = Helper.inputFloat(
+                f"{"Input The Origin Length":<{Global.TextFormatConstant}}: "
+            )
 
             originUnit = self.lengthKey[originNum]
             convertUnit = self.lengthKey[convertNum]
@@ -50,5 +54,9 @@ class Length:
             meterValue = self.lengthToMeter[originUnit](value)
             convertValue = self.lengthFromMeter[convertUnit](meterValue)
 
-            print(f"Origin Length  : {value} {originUnit}")
-            print(f"Convert Length : {convertValue} {convertUnit}")
+            print(
+                f"{"Origin Length":<{Global.TextFormatConstant}}: {value} {originUnit}"
+            )
+            print(
+                f"{"Convert Length":<{Global.TextFormatConstant}}: {convertValue} {convertUnit}"
+            )

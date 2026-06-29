@@ -1,4 +1,5 @@
 from .Helper import Helper
+from Global import Global
 
 
 class Temperature:
@@ -19,12 +20,18 @@ class Temperature:
 
     def Start(self):
         while True:
-            print("Temperature".center(25, "="))
+            print("Temperature".center(Global.HeaderFormatConstant, "="))
             print("1. Celcius")
             print("2. Fahrenheit")
             print("3. Kelvin")
-            originNum = input("Enter The Origin Unit: ")
-            convertNum = input("Enter The Convert Unit: ")
+            print("0. Exit")
+            print("=" * Global.HeaderFormatConstant)
+            originNum = input(
+                f"{"Enter The Origin Unit":<{Global.TextFormatConstant}}: "
+            )
+            convertNum = input(
+                f"{"Enter The Convert Unit":<{Global.TextFormatConstant}}: "
+            )
 
             if originNum == "0" or convertNum == "0":
                 return
@@ -33,7 +40,9 @@ class Temperature:
                 print("Input Invalid")
                 continue
 
-            value = Helper.inputFloat("Input The Current Temperature: ")
+            value = Helper.inputFloat(
+                f"{"Input The Current Temperature":<{Global.TextFormatConstant}}: "
+            )
 
             originUnit = self.tempKey[originNum]
             convertUnit = self.tempKey[convertNum]
@@ -41,5 +50,9 @@ class Temperature:
             celciusValue = self.tempToCelcius[originUnit](value)
             resultValue = self.tempFromCelcius[convertUnit](celciusValue)
 
-            print(f"Origin Temperature    : {value} {originUnit}")
-            print(f"Converted Temperature : {resultValue} {convertUnit}")
+            print(
+                f"{"Origin Temperature":<{Global.TextFormatConstant}}: {value} {originUnit}"
+            )
+            print(
+                f"{"Converted Temperature":<{Global.TextFormatConstant}}: {resultValue} {convertUnit}"
+            )

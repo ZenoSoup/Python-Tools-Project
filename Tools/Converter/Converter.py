@@ -1,17 +1,19 @@
 from .Weight import Weight
 from .Temperature import Temperature
 from .Length import Length
+from Global import Global
 
 
 class Converter:
     def Start(self):
         while True:
-            print("Converter".center(25, "="))
+            print("Converter".center(Global.HeaderFormatConstant, "="))
             print("1. Weight")
             print("2. Temperature")
             print("3. Length")
             print("0. Exit")
-            choice = input("Choice: ")
+            print("=" * Global.HeaderFormatConstant)
+            choice = input(f"{"Choice":<{Global.TextFormatConstant}}: ")
             if choice == "0":
                 return
 

@@ -1,14 +1,16 @@
 from Calculator.Calculator import Calculator
 from Converter.Converter import Converter
+from Global import Global
 
 
 def main():
     while True:
-        print("Tools".center(25, "="))
+        print("Tools".center(Global.HeaderFormatConstant, "="))
         print("1. Calculator")
         print("2. Conversion")
         print("0. Exit")
-        choice = input("Choice: ")
+        print("=" * Global.HeaderFormatConstant)
+        choice = input(f"{"Choice":{Global.TextFormatConstant}}: ")
 
         if choice == "1":
             calc = Calculator()

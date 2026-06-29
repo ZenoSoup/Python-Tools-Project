@@ -1,4 +1,5 @@
 from .Helper import Helper
+from Global import Global
 
 
 class Weight:
@@ -29,32 +30,39 @@ class Weight:
 
     def Start(self):
         while True:
-            print("Weight".center(25, "="))
+            print("Weight".center(Global.HeaderFormatConstant, "="))
             print("1. Kilogram")
             print("2. Gram")
             print("3. Miligram")
             print("4. Ounce")
             print("5. Metric Ton")
             print("0. Exit")
-            currentNum = input("Origin Unit  : ")
-            convertNum = input("Convert Unit : ")
+            print("=" * Global.HeaderFormatConstant)
+            originNum = input(f"{"Origin Unit":<{Global.TextFormatConstant}}: ")
+            convertNum = input(f"{'Convert Unit':<{Global.TextFormatConstant}}: ")
 
-            if currentNum not in self.weightKey or convertNum not in self.weightKey:
+            if originNum == "0" or convertNum == "0":
+                return
+
+            elif originNum not in self.weightKey or convertNum not in self.weightKey:
                 print("Invalid Unit Input")
                 continue
 
-            elif convertNum == "0":
-                return
+            weight = Helper.inputFloat(
+                f"{"Enter The Weight":<{Global.TextFormatConstant}}: "
+            )
 
-            weight = Helper.inputFloat("Enter The Weight: ")
-
-            currentUnit = self.weightKey[currentNum]
+            currentUnit = self.weightKey[originNum]
             convertUnit = self.weightKey[convertNum]
 
             kilogramValue = self.weightToKilogram[currentUnit](weight)
             convertedValue = self.weightFromKilogram[convertUnit](kilogramValue)
 
             print()
-            print(f"Original Weight  : {weight:,} {currentUnit}")
-            print(f"Converted Weight : {convertedValue:,} {convertUnit}")
+            print(
+                f"{"Original Weight":<{Global.TextFormatConstant}}: {weight:,} {currentUnit}"
+            )
+            print(
+                f"{"Converted Weight":<{Global.TextFormatConstant}}: {convertedValue:,} {convertUnit}"
+            )
             print()

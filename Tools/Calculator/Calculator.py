@@ -1,4 +1,5 @@
 import math
+from Global import Global
 
 
 class Calculator:
@@ -15,17 +16,18 @@ class Calculator:
     def Start(self):
         while True:
             try:
-                print('Type "Return" to get back to the main menu')
-                Masukan = input("Enter Expression: ")
+                print("Calculator".center(Global.HeaderFormatConstant, "="))
+                print('Type "exit" to get back to the main menu')
+                expression = input("Enter Expression: ")
 
-                if Masukan.lower() == "exit":
+                if expression.lower() == "exit":
                     return
 
-                self.Calculate(Masukan)
+                result = self.Calculate(expression)
+                print(f"{"Result":{Global.TextFormatConstant}}: {result:.2f}")
 
             except Exception as e:
-                print(f"error: {e}")
+                print(f"{"error":{Global.TextFormatConstant}}: {e}")
 
     def Calculate(self, userInput):
-        result = eval(userInput, {"__builtins__": None}, self.allowed_names)
-        print(f"Result: {result:.2f}")
+        return eval(userInput, {"__builtins__": None}, self.allowed_names)
