@@ -1,17 +1,20 @@
 from Global import Global
 from .ExpressionCalculator.ExpressionCalculator import ExpressionCalculator
 from .GeometryCalculator.GeometryCalculator import GeometryCalculator
+from .GradeCalculator.GradeCalculator import GradeCalculator
 
 class Calculator:
     def __init__(self):
         self.choices = {
             "1": "Expression Calculator",
-            "2": "Geometry Calculator"
+            "2": "Geometry Calculator",
+            "3": "Grade Calculator"
         }
 
         self.startChoice = {
             "Expression Calculator": lambda: ExpressionCalculator().Start(),
-            "Geometry Calculator": lambda: GeometryCalculator().Start()
+            "Geometry Calculator": lambda: GeometryCalculator().Start(),
+            "Grade Calculator": lambda: GradeCalculator().Start()
         }
 
     def Start(self):
@@ -24,7 +27,7 @@ class Calculator:
             print("0. Exit")
             print("=" * Global.HeaderFormatConstant)
 
-            choiceNum = input(f"{"Choice":<{Global.TextFormatConstant}}")
+            choiceNum = input(f"{"Choice":<{Global.TextFormatConstant}}: ")
             if choiceNum == "0":
                 return
             
