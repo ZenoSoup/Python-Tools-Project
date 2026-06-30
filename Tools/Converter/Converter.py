@@ -5,29 +5,34 @@ from Global import Global
 
 
 class Converter:
+    def __init__(self):
+        self.choices = {
+            "1": "Weight",
+            "2": "Temperature",
+            "3": "Length"
+        }
+
+        self.startChoice = {
+            "Weight": lambda: Weight().Start(),
+            "Temperature": lambda: Temperature().Start(),
+            "Length": lambda: Length().Start()
+        }
     def Start(self):
         while True:
             print("Converter".center(Global.HeaderFormatConstant, "="))
-            print("1. Weight")
-            print("2. Temperature")
-            print("3. Length")
+            
+            for key, value in self.choices.items():
+                print(f"{key}. {value}")
+
             print("0. Exit")
             print("=" * Global.HeaderFormatConstant)
-            choice = input(f"{"Choice":<{Global.TextFormatConstant}}: ")
-            if choice == "0":
+            choiceNum = input(f"{"Choice":<{Global.TextFormatConstant}}: ")
+            if choiceNum == "0":
                 return
-
-            elif choice == "1":
-                weight = Weight()
-                weight.Start()
-
-            elif choice == "2":
-                temp = Temperature()
-                temp.Start()
-
-            elif choice == "3":
-                length = Length()
-                length.Start()
-
-            else:
+            
+            if choiceNum not in self.choices:
                 print("Choice Invalid")
+                continue
+            
+            choice = self.choices[choiceNum]
+            self.startChoice[choice]()
