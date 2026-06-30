@@ -19,7 +19,7 @@ class Converter:
         }
     def Start(self):
         while True:
-            print("Converter".center(Global.HeaderFormatConstant, "="))
+            print("Unit Converter".center(Global.HeaderFormatConstant, "="))
             
             for key, value in self.choices.items():
                 print(f"{key}. {value}")
