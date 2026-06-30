@@ -1,3 +1,3 @@
 class Global:
-    HeaderFormatConstant: int = 55
+    HeaderFormatConstant: int = 60
     TextFormatConstant: int = 45
