@@ -1,6 +1,7 @@
 from Calculator.Calculator import Calculator
 from UnitConverter.UnitConverter import Converter
 from Security.Security import Security
+from StringTools.StringTools import StringTools
 from Global import Global
 
 
@@ -10,6 +11,7 @@ def main():
         print("1. Calculator")
         print("2. Unit Converter")
         print("3. Security")
+        print("4. String Tools")
         print("0. Exit")
         print("=" * Global.HeaderFormatConstant)
         choice = input(f"{"Choice":{Global.TextFormatConstant}}: ")
@@ -23,6 +25,9 @@ def main():
         elif choice == "3":
             sec = Security()
             sec.Start()
+        elif choice == "4":
+            strTools = StringTools()
+            strTools.Start()
         elif choice == "0":
             return
         else:
