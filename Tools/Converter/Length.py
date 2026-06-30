@@ -35,12 +35,19 @@ class Length:
             print("0. Exit")
             print("=" * Global.HeaderFormatConstant)
             originNum = input(f"{"Origin Unit":<{Global.TextFormatConstant}}: ")
+            
+            if originNum == "0":
+                return
+            
+            if originNum not in self.lengthKey:
+                print("Input Invalid")
+
             convertNum = input(f"{"Convert Unit":<{Global.TextFormatConstant}}: ")
 
-            if originNum == "0" or convertNum == "0":
+            if convertNum == "0":
                 return
 
-            if originNum not in self.lengthKey or convertNum not in self.lengthKey:
+            if convertNum not in self.lengthKey:
                 print("Input Invalid")
                 continue
 

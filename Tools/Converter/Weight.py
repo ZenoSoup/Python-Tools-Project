@@ -38,12 +38,19 @@ class Weight:
             print("0. Exit")
             print("=" * Global.HeaderFormatConstant)
             originNum = input(f"{"Origin Unit":<{Global.TextFormatConstant}}: ")
+
+            if originNum == "0":
+                return
+            
+            if originNum not in self.weightKey:
+                print("Input Invalid")
+
             convertNum = input(f"{'Convert Unit':<{Global.TextFormatConstant}}: ")
 
-            if originNum == "0" or convertNum == "0":
+            if convertNum == "0":
                 return
 
-            elif originNum not in self.weightKey or convertNum not in self.weightKey:
+            elif convertNum not in self.weightKey:
                 print("Invalid Unit Input")
                 continue
 

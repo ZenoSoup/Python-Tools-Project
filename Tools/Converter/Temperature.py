@@ -30,14 +30,22 @@ class Temperature:
             originNum = input(
                 f"{"Enter The Origin Unit":<{Global.TextFormatConstant}}: "
             )
+
+            if originNum == "0":
+                return
+            
+            if originNum not in self.tempKey:
+                print("Invalid Input")
+                continue
+
             convertNum = input(
                 f"{"Enter The Convert Unit":<{Global.TextFormatConstant}}: "
             )
 
-            if originNum == "0" or convertNum == "0":
+            if convertNum == "0":
                 return
 
-            if originNum not in self.tempKey or convertNum not in self.tempKey:
+            if convertNum not in self.tempKey:
                 print("Input Invalid")
                 continue
 
