@@ -23,7 +23,7 @@ class Weight:
         self.weightFromKilogram = {
             "Kilogram": lambda x: x / 1,
             "Gram": lambda x: x * 1000,
-            "Miligram": lambda x: x * 1e6,
+            "Miligram": lambda x: x * 1e-6,
             "Ounce": lambda x: x * 35274,
             "Metric Ton": lambda x: x / 1000,
         }
