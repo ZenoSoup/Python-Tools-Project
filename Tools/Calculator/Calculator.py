@@ -1,33 +1,36 @@
-import math
 from Global import Global
-
+from .ExpressionCalculator.ExpressionCalculator import ExpressionCalculator
+from .GeometryCalculator.GeometryCalculator import GeometryCalculator
 
 class Calculator:
     def __init__(self):
-        self.allowed_names = {
-            "sqrt": math.sqrt,
-            "sin": math.sin,
-            "cos": math.cos,
-            "tan": math.tan,
-            "pi": math.pi,
-            "e": math.e,
+        self.choices = {
+            "1": "Expression Calculator",
+            "2": "Geometry Calculator"
+        }
+
+        self.startChoice = {
+            "Expression Calculator": lambda: ExpressionCalculator().Start(),
+            "Geometry Calculator": lambda: GeometryCalculator().Start()
         }
 
     def Start(self):
         while True:
-            try:
-                print("Calculator".center(Global.HeaderFormatConstant, "="))
-                print('Type "exit" to get back to the main menu')
-                expression = input("Enter Expression: ")
+            print("Calculator".center(Global.HeaderFormatConstant, "="))
 
-                if expression.lower() == "exit":
-                    return
+            for key, value in self.choices.items():
+                print(f"{key}. {value}")
 
-                result = self.Calculate(expression)
-                print(f"{"Result":{Global.TextFormatConstant}}: {result:.2f}")
+            print("0. Exit")
+            print("=" * Global.HeaderFormatConstant)
 
-            except Exception as e:
-                print(f"{"error":{Global.TextFormatConstant}}: {e}")
+            choiceNum = input(f"{"Choice":<{Global.TextFormatConstant}}")
+            if choiceNum == "0":
+                return
+            
+            if choiceNum not in self.choices:
+                print("Choice Invalid")
+                continue
 
-    def Calculate(self, userInput):
-        return eval(userInput, {"__builtins__": None}, self.allowed_names)
+            choice = self.choices[choiceNum]
+            self.startChoice[choice]()

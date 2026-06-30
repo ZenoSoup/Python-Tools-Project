@@ -16,7 +16,7 @@ class GeometryCalculator:
             "Triangle": lambda: Triangle().Start(),
         }
 
-    def start(self):
+    def Start(self):
         while True:
             print("Geometry Calculator".center(Global.HeaderFormatConstant, "="))
 

@@ -1,6 +1,5 @@
 from Calculator.Calculator import Calculator
 from UnitConverter.UnitConverter import Converter
-from GeometryCalculator.GeometryCalculator import GeometryCalculator
 from Security.Security import Security
 from Global import Global
 
@@ -9,9 +8,8 @@ def main():
     while True:
         print("Tools".center(Global.HeaderFormatConstant, "="))
         print("1. Calculator")
-        print("2. Geometry Calculator")
-        print("3. Unit Converter")
-        print("4. Security")
+        print("2. Unit Converter")
+        print("3. Security")
         print("0. Exit")
         print("=" * Global.HeaderFormatConstant)
         choice = input(f"{"Choice":{Global.TextFormatConstant}}: ")
@@ -20,12 +18,9 @@ def main():
             calc = Calculator()
             calc.Start()
         elif choice == "2":
-            geoCalc = GeometryCalculator()
-            geoCalc.start()
-        elif choice == "3":
             conv = Converter()
             conv.Start()
-        elif choice == "4":
+        elif choice == "3":
             sec = Security()
             sec.Start()
         elif choice == "0":
