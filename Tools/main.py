@@ -37,7 +37,7 @@ def main():
             continue
         
         choice = choices[choiceNum]
-        executeChoice[choice]
+        executeChoice[choice]()
 
 if __name__ == "__main__":
     main()
