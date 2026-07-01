@@ -4,7 +4,11 @@ from Global import Global
 
 class Temperature:
     def __init__(self):
-        self.tempKey = {"1": "Celcius", "2": "Fahrenheit", "3": "Kelvin"}
+        self.tempKey = {
+            "1": "Celcius", 
+            "2": "Fahrenheit", 
+            "3": "Kelvin"
+        }
 
         self.tempToCelcius = {
             "Celcius": lambda x: x * 1,

@@ -4,35 +4,40 @@ from Security.Security import Security
 from StringTools.StringTools import StringTools
 from Global import Global
 
+choices = {
+    "1": "Calculator",
+    "2": "Unit Converter",
+    "3": "Security",
+    "4": "String Tools"
+}
+
+executeChoice = {
+    "Calculator": lambda: Calculator().Start(),
+    "Unit Converter": lambda: Converter().Start(),
+    "Security": lambda: Security().Start(),
+    "String Tools": lambda: Security.Start()
+}
 
 def main():
     while True:
         print("Tools".center(Global.HeaderFormatConstant, "="))
-        print("1. Calculator")
-        print("2. Unit Converter")
-        print("3. Security")
-        print("4. String Tools")
+        
+        for key, value in choices.items():
+            print(f"{key}. {value}")
+
         print("0. Exit")
         print("=" * Global.HeaderFormatConstant)
-        choice = input(f"{"Choice":{Global.TextFormatConstant}}: ")
+        choiceNum = input(f"{"Choice":{Global.TextFormatConstant}}: ")
 
-        if choice == "1":
-            calc = Calculator()
-            calc.Start()
-        elif choice == "2":
-            conv = Converter()
-            conv.Start()
-        elif choice == "3":
-            sec = Security()
-            sec.Start()
-        elif choice == "4":
-            strTools = StringTools()
-            strTools.Start()
-        elif choice == "0":
+        if choiceNum == "0":
             return
-        else:
-            print("Choice Invalid")
-
+        
+        if choiceNum not in choices:
+            print("Invalid Choice")
+            continue
+        
+        choice = choices[choiceNum]
+        executeChoice[choice]
 
 if __name__ == "__main__":
     main()
