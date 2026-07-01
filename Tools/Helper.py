@@ -1,4 +1,5 @@
 class Helper:
+    @staticmethod
     def inputInt(prompt: str):
         while True:
             try:
@@ -6,6 +7,7 @@ class Helper:
             except ValueError:
                 print("Please only enter an integer value")
 
+    @staticmethod
     def inputFloat(prompt: str):
         while True:
             try:
@@ -13,6 +15,7 @@ class Helper:
             except ValueError:
                 print("Please only enter a float value")
 
+    @staticmethod
     def inputConfirmation(prompt: str):
         while True:
             confirmation = input(prompt).upper()
