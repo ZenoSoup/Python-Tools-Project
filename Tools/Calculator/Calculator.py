@@ -2,19 +2,22 @@ from Global import Global
 from .ExpressionCalculator.ExpressionCalculator import ExpressionCalculator
 from .GeometryCalculator.GeometryCalculator import GeometryCalculator
 from .GradeCalculator.GradeCalculator import GradeCalculator
+from .AgeCalculator.AgeCalculator import AgeCalculator
 
 class Calculator:
     def __init__(self):
         self.choices = {
             "1": "Expression Calculator",
             "2": "Geometry Calculator",
-            "3": "Grade Calculator"
+            "3": "Grade Calculator",
+            "4": "Age Calculator"
         }
 
         self.startChoice = {
             "Expression Calculator": lambda: ExpressionCalculator().Start(),
             "Geometry Calculator": lambda: GeometryCalculator().Start(),
-            "Grade Calculator": lambda: GradeCalculator().Start()
+            "Grade Calculator": lambda: GradeCalculator().Start(),
+            "Age Calculator": lambda: AgeCalculator().Start()
         }
 
     def Start(self):
