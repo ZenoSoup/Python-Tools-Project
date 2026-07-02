@@ -1,6 +1,7 @@
 from .Weight import Weight
 from .Temperature import Temperature
 from .Length import Length
+from .Time import Time
 from Global import Global
 
 
@@ -9,13 +10,15 @@ class Converter:
         self.choices = {
             "1": "Weight",
             "2": "Temperature",
-            "3": "Length"
+            "3": "Length",
+            "4": "Time"
         }
 
         self.startChoice = {
             "Weight": lambda: Weight().Start(),
             "Temperature": lambda: Temperature().Start(),
-            "Length": lambda: Length().Start()
+            "Length": lambda: Length().Start(),
+            "Time": lambda: Time().Start()
         }
     def Start(self):
         while True:
