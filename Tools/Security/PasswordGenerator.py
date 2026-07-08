@@ -47,7 +47,3 @@ class PasswordGenerator:
             input()
 
             return
-
-            
-
-        

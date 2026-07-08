@@ -1,5 +1,6 @@
 from Global import Global
 from .PasswordGenerator import PasswordGenerator
+from .PasswordSafety import PasswordSafety
 
 """
     Genuinely don't know what else to put in here other than Password Generator
@@ -7,12 +8,15 @@ from .PasswordGenerator import PasswordGenerator
 class Security:
     def __init__(self):
         self.choices = {
-            "1": "Password Generator"
+            "1": "Password Generator",
+            "2": "Password Strength Checker"
         }
 
         self.startChoice = {
-            "Password Generator": lambda: PasswordGenerator().Start()
+            "Password Generator": lambda: PasswordGenerator().Start(),
+            "Password Strength Checker": lambda: PasswordSafety().Start()
         }
+
     def Start(self):
         while True:
             print("Security".center(Global.HeaderFormatConstant, "="))
