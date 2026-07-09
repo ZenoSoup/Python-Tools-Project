@@ -8,20 +8,21 @@ choices = {
     "1": "Calculator",
     "2": "Unit Converter",
     "3": "Security",
-    "4": "String Tools"
+    "4": "String Tools",
 }
 
 executeChoice = {
     "Calculator": lambda: Calculator().Start(),
     "Unit Converter": lambda: Converter().Start(),
     "Security": lambda: Security().Start(),
-    "String Tools": lambda: Security.Start()
+    "String Tools": lambda: StringTools().Start(),
 }
+
 
 def main():
     while True:
         print("Tools".center(Global.HeaderFormatConstant, "="))
-        
+
         for key, value in choices.items():
             print(f"{key}. {value}")
 
@@ -31,13 +32,14 @@ def main():
 
         if choiceNum == "0":
             return
-        
+
         if choiceNum not in choices:
             print("Invalid Choice")
             continue
-        
+
         choice = choices[choiceNum]
         executeChoice[choice]()
+
 
 if __name__ == "__main__":
     main()
