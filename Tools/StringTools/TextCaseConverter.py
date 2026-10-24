@@ -1,4 +1,6 @@
+import re
 from Global import Global
+
 
 class TextCaseConverter:
     def __init__(self):
@@ -7,15 +9,15 @@ class TextCaseConverter:
             "2": "All Lowercase",
             "3": "Capitalize First Word",
             "4": "Capitalize Every Word",
-            "5": "Capitalization"
+            "5": "Sentence Case",
         }
 
         self.getResult = {
-            "All Uppercase": lambda x: self.Uppercase(x),
-            "All Lowercase": lambda x: self.Lowercase(x),
-            "Capitalize First Word": lambda x: self.capitalizeFirst(x),
-            "Capitalize Every Word": lambda x: self.capitalizeAll(x),
-            "Capitalization": lambda x: self.capitalization(x)
+            "All Uppercase": self.Uppercase,
+            "All Lowercase": self.Lowercase,
+            "Capitalize First Word": self.capitalizeFirst,
+            "Capitalize Every Word": self.capitalizeAll,
+            "Sentence Case": self.sentenceCase,
         }
 
     def Start(self):
@@ -24,7 +26,7 @@ class TextCaseConverter:
 
             for key, value in self.choices.items():
                 print(f"{key}. {value}")
-            
+
             print("0. Exit")
             print("=" * Global.HeaderFormatConstant)
 
@@ -32,11 +34,11 @@ class TextCaseConverter:
 
             if choiceNum == "0":
                 return
-            
+
             if choiceNum not in self.choices:
                 print("Choice Invalid")
                 continue
-            
+
             text = input(f"{"Enter the text":<{Global.TextFormatConstant}}: ")
 
             choice = self.choices[choiceNum]
@@ -46,22 +48,17 @@ class TextCaseConverter:
 
     def Uppercase(self, text: str):
         return text.upper()
-    
+
     def Lowercase(self, text: str):
         return text.lower()
-    
+
     def capitalizeFirst(self, text: str):
         return text.capitalize()
-    
+
     def capitalizeAll(self, text: str):
         return text.title()
-    
-    def capitalization(self, text: str):
-        splitted = text.split('. ')
-        finalTextList = []
 
-        for sentence in splitted:
-            finalTextList.append(sentence.capitalize())
-        
-        finalText = '. '.join(finalTextList)
-        return finalText
+    def sentenceCase(self, text: str):
+        return re.sub(
+            r"(?:^|[.!?]\s+)([a-z])", lambda m: m.group(0).upper(), text
+        )

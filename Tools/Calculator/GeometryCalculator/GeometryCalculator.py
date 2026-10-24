@@ -32,6 +32,7 @@ class GeometryCalculator:
 
             if choiceNum not in self.shapes:
                 print("Input Invalid")
+                continue
 
             choice = self.shapes[choiceNum]
             self.shapesStart[choice]()

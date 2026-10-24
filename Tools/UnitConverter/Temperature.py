@@ -5,26 +5,26 @@ from Global import Global
 class Temperature:
     def __init__(self):
         self.tempKey = {
-            "1": "Celcius", 
-            "2": "Fahrenheit", 
-            "3": "Kelvin"
+            "1": "Celsius",
+            "2": "Fahrenheit",
+            "3": "Kelvin",
         }
 
-        self.tempToCelcius = {
-            "Celcius": lambda x: x * 1,
-            "Fahrenheit": lambda x: (x - 32) * 5 / 9,
+        self.tempToCelsius = {
+            "Celsius": lambda x: x * 1.0,
+            "Fahrenheit": lambda x: (x - 32.0) * 5.0 / 9.0,
             "Kelvin": lambda x: x - 273.15,
         }
 
-        self.tempFromCelcius = {
-            "Celcius": lambda x: x / 1,
-            "Fahrenheit": lambda x: (x * 9 / 5) + 32,
+        self.tempFromCelsius = {
+            "Celsius": lambda x: x / 1.0,
+            "Fahrenheit": lambda x: (x * 9.0 / 5.0) + 32.0,
             "Kelvin": lambda x: x + 273.15,
         }
 
     def Start(self):
         while True:
-            print("Temperature".center(Global.HeaderFormatConstant, "="))
+            print("Temperature Converter".center(Global.HeaderFormatConstant, "="))
 
             for key, value in self.tempKey.items():
                 print(f"{key}. {value}")
@@ -37,7 +37,7 @@ class Temperature:
 
             if originNum == "0":
                 return
-            
+
             if originNum not in self.tempKey:
                 print("Invalid Input")
                 continue
@@ -60,12 +60,21 @@ class Temperature:
             originUnit = self.tempKey[originNum]
             convertUnit = self.tempKey[convertNum]
 
-            celciusValue = self.tempToCelcius[originUnit](value)
-            resultValue = self.tempFromCelcius[convertUnit](celciusValue)
+            celsiusValue = self.tempToCelsius[originUnit](value)
+            if celsiusValue < -273.15:
+                print("Warning: Temperature is below absolute zero (-273.15 C / 0 K).")
 
+            resultValue = self.tempFromCelsius[convertUnit](celsiusValue)
+
+            print("=" * Global.HeaderFormatConstant)
             print(
                 f"{"Origin Temperature":<{Global.TextFormatConstant}}: {value} {originUnit}"
             )
             print(
-                f"{"Converted Temperature":<{Global.TextFormatConstant}}: {resultValue} {convertUnit}"
+                f"{"Converted Temperature":<{Global.TextFormatConstant}}: {resultValue:.2f} {convertUnit}"
             )
+
+            if not Helper.inputConfirmation(
+                f"{"Convert another temperature? (Y/N)":<{Global.TextFormatConstant}}: "
+            ):
+                return

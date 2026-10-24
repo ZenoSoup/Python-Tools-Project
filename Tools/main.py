@@ -1,3 +1,9 @@
+import sys
+from pathlib import Path
+
+# Ensure Tools directory is on sys.path
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 from Calculator.Calculator import Calculator
 from UnitConverter.UnitConverter import Converter
 from Security.Security import Security
